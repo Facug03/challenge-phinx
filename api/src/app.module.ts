@@ -1,9 +1,10 @@
 import { Module } from '@nestjs/common'
 import { TypeOrmModule } from '@nestjs/typeorm'
-import { PokemonModule } from './modules/pokemon/pokemon.module'
-import { configTypeOrm } from './config/type-orm'
+import { PokemonModule } from '@/src/modules/pokemon/pokemon.module'
+import { BattleModule } from '@/src/modules/battle/battle.module'
+import { configTypeOrm } from '@/src/config/type-orm'
 
 @Module({
-  imports: [TypeOrmModule.forRoot(configTypeOrm), PokemonModule]
+  imports: [TypeOrmModule.forRoot(configTypeOrm), PokemonModule, BattleModule]
 })
 export class AppModule {}
