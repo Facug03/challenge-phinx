@@ -5,7 +5,7 @@ export class Pokemon {
   @PrimaryColumn()
   id: string
 
-  @Column()
+  @Column({ unique: true })
   name: string
 
   @Column()
