@@ -1,4 +1,4 @@
-import { IsString, IsNumber } from 'class-validator'
+import { IsString, IsUrl, IsInt, Min } from 'class-validator'
 
 export class CreatePokemonDto {
   @IsString()
@@ -7,21 +7,25 @@ export class CreatePokemonDto {
   @IsString()
   name: string
 
-  @IsNumber()
+  @IsInt()
+  @Min(0)
   attack: number
 
-  @IsNumber()
+  @IsInt()
+  @Min(0)
   defense: number
 
-  @IsNumber()
+  @IsInt()
+  @Min(0)
   hp: number
 
-  @IsNumber()
+  @IsInt()
+  @Min(0)
   speed: number
 
   @IsString()
   type: string
 
-  @IsString()
+  @IsUrl()
   imageUrl: string
 }
