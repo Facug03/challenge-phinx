@@ -2,8 +2,7 @@
   "name": "api",
   "version": "0.0.1",
   "description": "",
-  "author": "",
-  "private": true,
+  "author": "",  "private": true,
   "license": "UNLICENSED",
   "scripts": {
     "build": "nest build",
@@ -17,7 +16,12 @@
     "test:watch": "jest --watch",
     "test:cov": "jest --coverage",
     "test:debug": "node --inspect-brk -r tsconfig-paths/register -r ts-node/register node_modules/.bin/jest --runInBand",
-    "test:e2e": "jest --config ./test/jest-e2e.json"
+    "test:e2e": "jest --config ./test/jest-e2e.json",
+    "typeorm": "ts-node --swc ../node_modules/typeorm/cli",
+    "migration:run": "npm run typeorm migration:run -- -d ./src/config/type-orm.ts",
+    "migration:generate": "cross-var npm run typeorm -- -d ./src/config/type-orm.ts migration:generate ./src/migrations/$npm_config_name",
+    "migration:create": "cross-var npm run typeorm -- migration:create ./src/migrations/$npm_config_name",
+    "migration:revert": "npm run typeorm -- -d ./src/config/type-orm.ts migration:revert"
   },
   "dependencies": {
     "@nestjs/common": "10.4.4",
@@ -39,6 +43,7 @@
     "@types/jest": "29.5.2",
     "@types/node": "20.3.1",
     "@types/supertest": "6.0.0",
+    "cross-var": "1.1.0",
     "jest": "29.5.0",
     "source-map-support": "0.5.21",
     "supertest": "7.0.0",
