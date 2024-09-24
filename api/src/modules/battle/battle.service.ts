@@ -36,13 +36,12 @@ export class BattleService {
     const pokemonAttacking = fighterOne.id === turn ? fighterOne : fighterTwo
     const pokemonDefending = fighterOne.id === turn ? fighterTwo : fighterOne
 
-    const damage = pokemonAttacking.attack - pokemonDefending.defense
+    const damage =
+      pokemonAttacking.attack <= pokemonDefending.defense ? 1 : pokemonAttacking.attack - pokemonDefending.defense
     pokemonDefending.hp -= damage
-    console.log({ pokemonDefending })
 
     if (pokemonDefending.hp > 0) return this.fight(fighters, pokemonDefending.id)
 
-    console.log({ pokemonAttacking })
     return pokemonAttacking.id
   }
 
