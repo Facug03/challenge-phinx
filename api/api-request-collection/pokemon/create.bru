@@ -1,0 +1,24 @@
+meta {
+  name: create
+  type: http
+  seq: 1
+}
+
+post {
+  url: {{URL}}/pokemon
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+    "id": "pokemon-6",
+    "name": "Charizard",
+    "attack": 5,
+    "defense": 5,
+    "hp": 5,
+    "speed": 6,
+    "type": "Type",
+    "imageUrl": "https://www.pokemon.com/static-assets/content-assets/cms2/img/pokedex/full/006.png"
+  }
+}
