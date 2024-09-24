@@ -6,14 +6,14 @@ export class Battle {
   @PrimaryGeneratedColumn('increment')
   id: number
 
-  @ManyToOne(() => Pokemon)
+  @ManyToOne(() => Pokemon, (pokemon) => pokemon.id)
   @JoinColumn({ name: 'winnerId' })
   winner: Pokemon
 
-  @ManyToOne(() => Pokemon)
+  @ManyToOne(() => Pokemon, (pokemon) => pokemon.id)
   @JoinColumn({ name: 'loserId' })
   loser: Pokemon
 
-  @Column({ type: 'timestamp', default: () => 'CURRENT_TIMESTAMP' })
-  date: Date
+  @Column({ type: 'datetime', default: () => 'CURRENT_TIMESTAMP' })
+  date: string
 }
