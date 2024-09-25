@@ -8,7 +8,7 @@
     "dev": "concurrently  \"npm run dev:api\" \"npm run dev:web\"",
     "dev:api": "npm run start:dev -w=api",
     "dev:web": "npm run dev -w=web",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "migration:run": "npm run migration:run -w=api"
   },
   "devDependencies": {
     "@eslint/js": "9.11.1",
