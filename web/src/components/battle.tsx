@@ -84,7 +84,7 @@ export function Battle({ fighterOne, fighterTwo }: Props) {
           }}
           onClick={onStartBattle}
         >
-          Start Battle
+          {loading ? 'Fighting...' : 'Start Battle'}
         </Button>
 
         <PokemonCard pokemon={fighterTwo} type='stats' />
