@@ -1,8 +1,11 @@
+<div align="center">
+
+
 # Battle of Pokemon
 
-## 📜 Descripción
-
 Este proyecto es una aplicación web que permite al usuario seleccionar dos pokemons aleatorios y después jugar un duelo entre ellos. Está desarrolado con React, NestJS, TypeORM y SQLite.
+
+</div>
 
 ## 📝 Requerimientos
 
