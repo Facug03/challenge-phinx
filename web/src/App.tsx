@@ -7,6 +7,7 @@ import { Battle } from '@/src/components/battle'
 import { fetcher } from '@/src/services/fetcher'
 import { Pokemon } from '@/src/models/pokemon'
 import { AppSkeleton } from '@/src/skeletons/app-skeleton'
+import { getRandomArrayElement } from '@/src/utils/get-random-element'
 
 export function App() {
   const { data, error, isLoading } = useSWR<Pokemon[]>('/pokemon', fetcher)
@@ -19,6 +20,22 @@ export function App() {
 
   if (error || !data) return <Typography variant='h5'>Error: failed to load pokemons</Typography>
 
+  const onSelectPokemon = (pokemon: Pokemon) => {
+    const removeSelected = data.filter((p) => p.id !== pokemon.id)
+    const randomOpponent = getRandomArrayElement(removeSelected)
+
+    if (battle?.fighterTwo?.id === randomOpponent.id) {
+      const removeOponent = removeSelected.filter((p) => p.id !== randomOpponent.id)
+      const newRandomOpponent = getRandomArrayElement(removeOponent)
+
+      setBattle({ fighterOne: pokemon, fighterTwo: newRandomOpponent })
+
+      return
+    }
+
+    setBattle({ fighterOne: pokemon, fighterTwo: randomOpponent })
+  }
+
   return (
     <Stack component='main' sx={{ maxWidth: '1280px', margin: '2rem auto' }}>
       <Typography variant='h4' component='h1' marginBottom='2rem'>
@@ -28,6 +45,12 @@ export function App() {
       <Typography variant='h5' component='h2' marginBottom='1rem'>
         Select your pokemon
       </Typography>
+
+      {data.length === 0 && (
+        <Typography variant='h5' component='h2' marginBottom='1rem'>
+          No pokemons available
+        </Typography>
+      )}
 
       <Stack
         sx={{
@@ -39,17 +62,7 @@ export function App() {
         }}
       >
         {data.map((pokemon) => (
-          <PokemonCard
-            key={pokemon.id}
-            pokemon={pokemon}
-            type='default'
-            onClick={() => {
-              const removeSelected = data.filter((p) => p.id !== pokemon.id)
-              const randomOpponent = removeSelected[Math.floor(Math.random() * removeSelected.length)]
-
-              setBattle({ fighterOne: pokemon, fighterTwo: randomOpponent })
-            }}
-          />
+          <PokemonCard key={pokemon.id} pokemon={pokemon} type='default' onClick={() => onSelectPokemon(pokemon)} />
         ))}
       </Stack>
 
