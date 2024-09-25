@@ -4,7 +4,7 @@ node_modules
 build
 dist
 dist-ssr
-*.local
+# *.local
 
 # Logs
 logs
@@ -48,7 +48,7 @@ lerna-debug.log*
 .env.development.local
 .env.test.local
 .env.production.local
-.env.local
+# .env.local
 
 # temp directory
 .temp
