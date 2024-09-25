@@ -2,7 +2,8 @@
   "name": "api",
   "version": "0.0.1",
   "description": "",
-  "author": "",  "private": true,
+  "author": "",
+  "private": true,
   "license": "UNLICENSED",
   "scripts": {
     "build": "nest build",
