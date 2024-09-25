@@ -33,7 +33,6 @@ export default tseslint.config(
     }
   },
   {
-    ignores: ['dist'],
     files: ['/web/**/*.{ts,tsx}'],
     languageOptions: {
       ecmaVersion: 2020,
